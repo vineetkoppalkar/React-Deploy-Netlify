@@ -7,3 +7,7 @@
 
 ### `build-for-netlify` command
 This projects adds the command `npm run build-for-netlify` which executes the commands in `build.sh`. This command builds the react project and add the `_redirects` file containing `/* /index.html 200` in `/build`
+
+
+### Deployed site
+https://deploy-netlify-test.netlify.com/
