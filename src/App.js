@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import { Switch, Route, Link, withRouter } from 'react-router-dom'
+
+import Links from './views/Links';
+import About from './views/About';
+import RandomGIF from './views/RandomGIF';
+import NotFound from './views/NotFound';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render() {
+    const { pathname } = this.props.location;
+    return (
+      <div className="App">
+        <h1>Welcome to 101 ways!</h1>
+        {
+          pathname !== '/' ? (
+            <h3><Link to="/">Home</Link></h3>
+          ) : null
+        }
+        <Switch>
+          <Route exact path="/" component={Links} />
+          <Route exact path="/about" component={About} />
+          <Route exact path="/random-gif" component={RandomGIF} />
+          <Route path="*" component={NotFound} />
+        </Switch>
+      </div>
+    );
+  }
 }
 
-export default App;
+export default withRouter(App);
